@@ -30,7 +30,7 @@ export default function ConnectSection() {
     const links = document.querySelectorAll('.hover-this')
     const cursor = document.querySelector('.cursor')
 
-    const animateit = function (e) {
+    const animateit = function (e: MouseEvent) {
       const span = this.querySelector('span')
       const { offsetX: x, offsetY: y } = e
       const { offsetWidth: width, offsetHeight: height } = this
