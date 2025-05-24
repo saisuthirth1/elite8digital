@@ -5,7 +5,7 @@ import Link from "next/link"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 import { ArrowRight } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 
 // Import the Google Font in your CSS file
 // Add to your CSS file:

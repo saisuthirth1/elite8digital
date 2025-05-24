@@ -4,7 +4,7 @@ import { useEffect } from "react"
 import Link from "next/link"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
+import { Button } from "./ui/button"
 import { Linkedin, Twitter, Globe, User, Plus } from "lucide-react"
 
 // Import the Google Font in your CSS file

@@ -4,8 +4,8 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Button } from "@/components/ui/button"
-import Navbar from "@/components/navbar"
+import { Button } from "./ui/button"
+import Navbar from "./navbar"
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false)

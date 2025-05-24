@@ -5,8 +5,9 @@ import { useEffect, useState } from "react"
 import Link from "next/link"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+
+import { Button } from "./ui/button"
+import { Input } from "./ui/input"
 
 // Import the Google Font in your CSS file
 // Add to your CSS file:
@@ -56,7 +57,7 @@ export default function ConnectSection() {
     }
 
     links.forEach(b => b.addEventListener('mousemove', animateit))
-    links.forEach(b => b.addEventListener('mouseleave', animateit))
+    links.forEach(b => b.removeEventListener('mouseleave', animateit))
     window.addEventListener('mousemove', editCursor)
 
     // Cleanup event listeners
@@ -208,3 +209,4 @@ export default function ConnectSection() {
     </section>
   )
 }
+import { cn } from "../lib/utils";

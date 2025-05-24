@@ -3,9 +3,9 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { ChevronDown, Menu, X } from "lucide-react"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { cn } from "../lib/utils"
+import { Button } from "./ui/button"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "./ui/dropdown-menu"
 import { motion, useAnimation } from "framer-motion"
 import { useInView } from "react-intersection-observer"
 
