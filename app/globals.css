@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 230 25% 5%;
+    --foreground: 210 40% 98%;
+    --card: 230 25% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 230 25% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 320 100% 60%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 180 100% 50%;
+    --secondary-foreground: 230 25% 10%;
+    --muted: 230 25% 15%;
+    --muted-foreground: 210 40% 70%;
+    --accent: 270 100% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 100% 50%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 230 25% 20%;
+    --input: 230 25% 20%;
+    --ring: 320 100% 60%;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    background-image: radial-gradient(circle at 50% 50%, rgba(157, 0, 255, 0.05) 0%, rgba(0, 0, 0, 0.8) 100%);
+    background-attachment: fixed;
+    cursor: none;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+
+  /* Hide default cursor on interactive elements */
+  a,
+  button,
+  [role="button"],
+  input,
+  select,
+  textarea,
+  label,
+  summary {
+    cursor: none;
+  }
+}
+
+.font-serif {
+  font-family: var(--font-playfair);
+}
+
+.font-sans {
+  font-family: var(--font-inter);
+}
+
+.font-roboto {
+  font-family: var(--font-roboto);
+}
+
+.neon-text {
+  text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
+}
+
+.neon-text-blue {
+  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff;
+}
+
+.neon-text-purple {
+  text-shadow: 0 0 5px #9d00ff, 0 0 10px #9d00ff, 0 0 15px #9d00ff;
+}
+
+.neon-border {
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, inset 0 0 5px #ff00ff;
+}
+
+.neon-border-blue {
+  box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, inset 0 0 5px #00ffff;
+}
+
+.neon-border-purple {
+  box-shadow: 0 0 5px #9d00ff, 0 0 10px #9d00ff, inset 0 0 5px #9d00ff;
+}
+
+.cyber-grid {
+  background-size: 30px 30px;
+  background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+}
+
+.glass-effect {
+  background: rgba(20, 20, 40, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glow-effect {
+  position: relative;
+}
+
+.glow-effect::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #9d00ff, #00ffd5);
+  z-index: -1;
+  border-radius: inherit;
+  animation: glowing 3s linear infinite;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+} 
+
+/* Cursor */
+html, body {
+  cursor: none;
+}
+
+.cursor {
+  pointer-events: none;
+  position: fixed;
+  padding: 1rem;
+  background-color: transparent;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transition: transform 0.3s ease;
+  z-index: 9999;
+}
+
+.hover-this {
+  transition: all 0.3s ease;
+}
+
+.hover-this span {
+  display: inline-block;
+  font-family: 'Russo One', sans-serif;
+  transition: transform 0.1s linear;
+}
+
+.hover-this:hover ~ .cursor,
+.hover-this:hover .cursor {
+  transform: translate(-50%, -50%) scale(8);
+}
+
+/* ===================== */
+/* Loading Animation */
+/* ===================== */
+
+@property --p {
+  syntax: '<integer>';
+  initial-value: 0;
+  inherits: true;
+}
+
+@property --r {
+  syntax: '<length-percentage>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --x {
+  syntax: '<length-percentage>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --y {
+  syntax: '<length-percentage>';
+  initial-value: 0px;
+  inherits: false;
+}
+
+.loading-animation {
+  counter-reset: p var(--p);
+  mix-blend-mode: lighten;
+  animation: pAnim var(--t) linear infinite;
+}
+
+.loading-animation::before,
+.loading-animation::after {
+  background: linear-gradient(-45deg, #d196dd, #fd954e);
+  grid-area: 1/1;
+}
+
+.loading-animation::before {
+  --x: var(--u);
+  --y: var(--u);
+  --r: calc(100% - var(--b));
+  --rond: red calc(var(--u) - 1px), #0000 var(--u);
+  --mask:
+    radial-gradient(circle at var(--x) var(--y), var(--rond)),
+    radial-gradient(closest-side, #0000 var(--r), red calc(var(--r) + 1px) calc(100% - 1px), #0000),
+    conic-gradient(red calc(var(--p) * 1%), #0000 0%),
+    radial-gradient(circle at 50% var(--u), var(--rond));
+  padding: var(--r);
+  -webkit-mask: var(--mask);
+  mask: var(--mask);
+  -webkit-mask-composite: source-over, source-in;
+  mask-composite: add, intersect;
+  animation:
+    rAnim var(--t) ease-out infinite,
+    xAnim calc(0.25 * var(--t)) var(--e) calc(-0.125 * var(--t)) infinite alternate,
+    yAnim calc(0.25 * var(--t)) var(--e) infinite alternate;
+  content: '';
+}
+
+.loading-animation::after {
+  display: grid;
+  place-items: center;
+  -webkit-background-clip: text;
+  color: transparent;
+  mix-blend-mode: difference;
+  font: 900 6em 'Cousine', monospace;
+  content: counter(p) '%';
+}
+
+:root {
+  --r: 2.5em;
+  --b: calc(0.2 * var(--r));
+  --u: calc(0.5 * var(--b));
+  --t: 6s;
+  --e: cubic-bezier(0.365, 0, 0.635, 1);
+}
+
+@keyframes pAnim {
+  50%, 100% { --p: 100; }
+}
+
+@keyframes rAnim {
+  0%, 50% { --r: calc(100% - var(--b)); }
+  75%, 100% { --r: -1px; }
+}
+
+@keyframes xAnim {
+  100% { --x: calc(100% - var(--u)); }
+}
+
+@keyframes yAnim {
+  100% { --y: calc(100% - var(--u)); }
+}
