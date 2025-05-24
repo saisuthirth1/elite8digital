@@ -24,10 +24,10 @@ export default function ProcessSection() {
     }
 
     // Cursor effect logic
-    const links = document.querySelectorAll('.hover-this')
-    const cursor = document.querySelector('.cursor')
+    const links = document.querySelectorAll<HTMLElement>('.hover-this')
+    const cursor = document.querySelector<HTMLElement>('.cursor')
 
-    const animateit = function (e) {
+    const animateit = function (this: HTMLElement, e: MouseEvent) {
       const span = this.querySelector('span')
       const { offsetX: x, offsetY: y } = e
       const { offsetWidth: width, offsetHeight: height } = this
@@ -45,10 +45,12 @@ export default function ProcessSection() {
       }
     }
 
-    const editCursor = e => {
+    const editCursor = (e: MouseEvent) => {
       const { clientX: x, clientY: y } = e
-      cursor.style.left = x + 'px'
-      cursor.style.top = y + 'px'
+      if (cursor) {
+        cursor.style.left = x + 'px'
+        cursor.style.top = y + 'px'
+      }
     }
 
     links.forEach(b => b.addEventListener('mousemove', animateit))

@@ -26,45 +26,47 @@ export default function Navbar() {
       controls.start("visible")
     }
 
-    // Cursor effect logic
-    const links = document.querySelectorAll('.hover-this')
-    const cursor = document.querySelector('.cursor')
+   // Cursor effect logic
+   const links = document.querySelectorAll<HTMLElement>('.hover-this')
+   const cursor = document.querySelector<HTMLElement>('.cursor')
 
-    const animateit = function (e) {
-      const span = this.querySelector('span')
-      const { offsetX: x, offsetY: y } = e
-      const { offsetWidth: width, offsetHeight: height } = this
+   const animateit = function (this: HTMLElement, e: MouseEvent) {
+     const span = this.querySelector('span')
+     const { offsetX: x, offsetY: y } = e
+     const { offsetWidth: width, offsetHeight: height } = this
 
-      const move = 25
-      const xMove = x / width * (move * 2) - move
-      const yMove = y / height * (move * 2) - move
+     const move = 25
+     const xMove = x / width * (move * 2) - move
+     const yMove = y / height * (move * 2) - move
 
-      if (span) {
-        span.style.transform = `translate(${xMove}px, ${yMove}px)`
-      }
+     if (span) {
+       span.style.transform = `translate(${xMove}px, ${yMove}px)`
+     }
 
-      if (e.type === 'mouseleave') {
-        if (span) span.style.transform = ''
-      }
-    }
+     if (e.type === 'mouseleave') {
+       if (span) span.style.transform = ''
+     }
+   }
 
-    const editCursor = e => {
-      const { clientX: x, clientY: y } = e
-      cursor.style.left = x + 'px'
-      cursor.style.top = y + 'px'
-    }
+   const editCursor = (e: MouseEvent) => {
+     const { clientX: x, clientY: y } = e
+     if (cursor) {
+       cursor.style.left = x + 'px'
+       cursor.style.top = y + 'px'
+     }
+   }
 
-    links.forEach(b => b.addEventListener('mousemove', animateit))
-    links.forEach(b => b.addEventListener('mouseleave', animateit))
-    window.addEventListener('mousemove', editCursor)
+   links.forEach(b => b.addEventListener('mousemove', animateit))
+   links.forEach(b => b.addEventListener('mouseleave', animateit))
+   window.addEventListener('mousemove', editCursor)
 
-    // Cleanup event listeners
-    return () => {
-      links.forEach(b => b.removeEventListener('mousemove', animateit))
-      links.forEach(b => b.removeEventListener('mouseleave', animateit))
-      window.removeEventListener('mousemove', editCursor)
-    }
-  }, [controls, inView])
+   // Cleanup event listeners
+   return () => {
+     links.forEach(b => b.removeEventListener('mousemove', animateit))
+     links.forEach(b => b.removeEventListener('mouseleave', animateit))
+     window.removeEventListener('mousemove', editCursor)
+   }
+ }, [controls, inView])
 
   const containerVariants = {
     hidden: {},
