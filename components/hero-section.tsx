@@ -25,6 +25,7 @@ export default function HeroSection() {
           alt="Technology background"
           fill
           priority
+          quality={100}
           className="object-cover"
         />
       </div>

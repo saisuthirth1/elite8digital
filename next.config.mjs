@@ -1,9 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  basePath: process.env.NODE_ENV === 'production' ? '/elite8digital' : '',
   images: {
-    unoptimized: true,
+    domains: ['vercel.com'],
+    formats: ['image/avif', 'image/webp']
   },
 }
 
